@@ -1,5 +1,8 @@
 using Microsoft.AspNetCore.Mvc;
 using System.Xml.Linq;
+using Microsoft.Extensions.Configuration;
+
+
 
 namespace sindibad.web.Controllers
 {
@@ -7,12 +10,20 @@ namespace sindibad.web.Controllers
     [Route("[controller]")]
     public class ValuesController : ControllerBase
     {
-       
+
+        private IConfiguration _configuration;
+
+        public ValuesController(IConfiguration configuration)
+        {
+            _configuration = configuration;
+        }
+
 
         [HttpGet("functionApp")]
         public async Task<IActionResult> Get([FromQuery] string name)
         {
-            string ApiUrl = $"https://function-d2544.azurewebsites.net/api/HttpExample?name={name}";
+            var functionAppUrl = _configuration["SandibadFunctionAppUrl"];
+            string ApiUrl = $"{functionAppUrl}?name={name}";
 
             try
             {
