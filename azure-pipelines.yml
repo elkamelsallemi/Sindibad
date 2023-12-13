@@ -1,5 +1,4 @@
-trigger:
-- main
+
 
 variables:
   buildConfiguration: 'Release'
@@ -89,8 +88,8 @@ stages:
               appSettings: |
                 [
                   {
-                    "name": "AppSettings__sindibad-function-app-Url",
-                    "value": "http://$(functionAppName).azurewebsites.net/api/HttpFunction",
+                    "name": "SandibadFunctionAppUrl",
+                    "value": "https://$(functionAppName).azurewebsites.net/api/HttpFunction",
                     "slotSetting": false
                   }
                 ]
