@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.7.34018.315
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "sindibad.web", "sindibad.web\sindibad.web.csproj", "{D1DB0948-8D35-4433-B91F-AA01AB4DD9F2}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "sindibad.function.app", "sindibad.function.app\sindibad.function.app.csproj", "{3623D2A9-E03F-4FE3-AF85-7F13BC525358}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{D1DB0948-8D35-4433-B91F-AA01AB4DD9F2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D1DB0948-8D35-4433-B91F-AA01AB4DD9F2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D1DB0948-8D35-4433-B91F-AA01AB4DD9F2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D1DB0948-8D35-4433-B91F-AA01AB4DD9F2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3623D2A9-E03F-4FE3-AF85-7F13BC525358}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3623D2A9-E03F-4FE3-AF85-7F13BC525358}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3623D2A9-E03F-4FE3-AF85-7F13BC525358}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3623D2A9-E03F-4FE3-AF85-7F13BC525358}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {D1DF57E2-C660-4D60-96B4-66C7D8B6DEFF}
+	EndGlobalSection
+EndGlobal
