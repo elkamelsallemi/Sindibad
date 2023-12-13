@@ -46,3 +46,51 @@ stages:
 
     - publish: '$(Build.ArtifactStagingDirectory)'
       artifact: drop
+
+- stage: 'Deploy'
+  displayName: 'Deploy the web application'
+  dependsOn: Build
+  jobs:
+  - deployment: Deploy
+    pool:
+      name: 'Default'
+    environment: SindibadEnv
+    variables:
+    - group: Sindibad
+    strategy:
+      runOnce:
+        deploy:
+          steps:
+          - download: current
+            artifact: drop
+          - task: AzureWebApp@1
+            displayName: 'Azure App Service Deploy: website'
+            inputs:
+              azureSubscription: 'Resource-management-CodeHub'
+              appName: '$(WebAppName)'
+              appType: webAppLinux
+              package: '$(Pipeline.Workspace)/drop/$(buildConfiguration)/sindibad.Web.zip'
+
+          - task: AzureFunctionApp@1
+            displayName: 'Azure Function Deploy: sindibad.function.app'
+            inputs:
+              azureSubscription: 'Resource-management-CodeHub'
+              appType: functionApp
+              appName: '$(FunctionAppName)'
+              package: '$(Pipeline.Workspace)/drop/$(buildConfiguration)/sindibad.function.app.zip'
+              runtimeStack: DOTNET|6.0
+              startUpCommand: 'func azure functionapp publish $(functionAppName) --no-bundler'
+          - task: AzureAppServiceSettings@1
+            displayName: 'Update web app settings'
+            inputs:
+              azureSubscription: 'Resource-management-CodeHub'
+              appName: $(WebAppName)
+              resourceGroupName: $(ResourceGroupName)
+              appSettings: |
+                [
+                  {
+                    "name": "AppSettings__sindibad-function-app-Url",
+                    "value": "http://$(functionAppName).azurewebsites.net/api/HttpFunction",
+                    "slotSetting": false
+                  }
+                ]
